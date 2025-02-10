@@ -1,5 +1,5 @@
 import p5 from "p5";
-import { Ball2 } from "../models/ball2";
+import { Ball2 } from "./models/ball2";
 
 export class BouncyBalls2 {
     Draw(sketch: p5) {

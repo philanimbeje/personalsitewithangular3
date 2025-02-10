@@ -1,0 +1,8 @@
+<br><br><br>
+<div class="flex flex-wrap gap-8">
+    @for(project of projects(); track project.id) {
+        <div class="p-2 items-center justify-center bg-cover max-w-sm">
+            <app-custom-tile [project]='project'></app-custom-tile>
+        </div>
+    }
+</div>

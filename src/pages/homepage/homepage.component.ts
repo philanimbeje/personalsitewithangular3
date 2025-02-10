@@ -16,6 +16,7 @@ export class HomepageComponent implements OnInit  {
 
   private canvas: any;
   private randomNumber: number = Math.floor(Math.random() * 6);
+  
   ngOnInit(): void {
     const sketch = (sketch: p5) => {
       this.selectDrawing(sketch);
