@@ -1,6 +1,7 @@
-import { Component, signal } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { Project } from '../../models/project';
 import { CustomTileComponent } from '../../components/custom-tile/custom-tile.component';
+import { ProjectsService } from './service/projects.service';
 
 @Component({
   selector: 'app-projectspage',
@@ -8,22 +9,17 @@ import { CustomTileComponent } from '../../components/custom-tile/custom-tile.co
   templateUrl: './projectspage.component.html',
   styleUrl: './projectspage.component.css'
 })
-export class ProjectspageComponent {
-  projects = signal<Project[]>([
-    {
-      "id":1,
-      "project": "Simple Portfolio Website",
-      "type": "software",
-      "tools": [ "Angular v19", " Typescript", " p5.js", " Angular Material", " Tailwind", " Font-Awesome", " tilt.js"],
-      "deployment": {
-        "accessUrl": "http://www.philanimbeje.co.za",
-        "hostPlatform": "Github Pges"
-      },
-      "projectUrl": "https://github.com/philanimbeje/personalsitewithangular3",
-      "description": "A simple portfolio project",
-      "imageUrl": "https://wallpaperaccess.com/full/2272665.jpg",
-      "symbol": "fa-user"
-    }
-  ]);
+export class ProjectspageComponent implements OnInit{
+  projects = signal<Project[]>([]);
+  projectService:ProjectsService;
+
+  constructor(projectService: ProjectsService)
+  {
+    this.projectService = projectService;
+  }
+  
+  ngOnInit(){
+    this.projects.set(this.projectService.getProjects())
+  }
 
 }
